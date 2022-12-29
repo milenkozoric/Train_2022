@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row bg-light">
+    <div class="col-3 "></div>
+    <div class="col-6 ">
+      <legend>Station list for train {{ train.number }}</legend>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Stations</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Departure</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of train.stations">
+            <td>{{ item.name }}</td>
+            <td>{{ item.arrival | date : "HH:mm" }}</td>
+            <td>{{ item.departure | date : "HH:mm" }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="btn btn-danger hvr-grow" (click)="onToTicketForm(train._id)">
+        Buy Tycket
+      </button>
+    </div>
+    <div class="col-3 "></div>
+  </div>
+</div>

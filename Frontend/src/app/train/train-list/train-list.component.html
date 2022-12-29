@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row bg-light">
+    <div class="col">
+      <div class="row">
+        <div class="col-6">
+          <!--from-->
+          <label for="from">From:</label>
+          <select
+            class="form-control"
+            name="from"
+            id="from"
+            (change)="onStationFrom($event)"
+          >
+            <option value="">--</option>
+            <option *ngFor="let item of stations" [value]="item.name">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <!--to-->
+          <label for="to">To:</label>
+          <select
+            class="form-control"
+            name="to"
+            id="to"
+            (change)="onStationTo($event)"
+          >
+            <option value="">--</option>
+            <option *ngFor="let item of stations" [value]="item.name">
+              {{ item.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Number</th>
+            <th scope="col">From</th>
+            <th scope="col">Departure</th>
+            <th scope="col">To</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Travels</th>
+            <th scope="col">Type</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let train of trains">
+            <td>{{ train.number }}</td>
+            <td>{{ train.from }}</td>
+            <td>{{ train.departure | date : "dd.MM.yyyy HH:mm" }}</td>
+            <td>{{ train.to }}</td>
+            <td>{{ train.arrival | date : "dd.MM.yyyy HH:mm" }}</td>
+            <td>{{ train.travels }}</td>
+            <td>
+              <img
+                *ngIf="train.type == 'brzi' || 'regio'"
+                src="../../../assets/images/{{ train.type }}.jpg"
+                alt=""
+              />
+              <img
+                *ngIf="train.type == 'inter-city'"
+                src="../../../assets/images/{{ train.type }}.svg"
+                alt=""
+              />
+            </td>
+
+            <td>{{ train.price }}.00 rsd</td>
+            <td>
+              <button
+                class="btn btn-secondary hvr-grow"
+                [routerLink]="[train._id]"
+              >
+                Details
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn btn-danger hvr-grow"
+                (click)="onToTicketForm(train._id)"
+              >
+                Buy Tycket
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+.naslov {
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 7px;
+  background: #efecec;
+  box-shadow: 28px 28px 61px #978f8f, -28px -28px 61px #ffffff;
+}

@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ngb-accordion [closeOthers]="true">
+        <ngb-panel
+          title="{{ ticket.from }} ({{
+            ticket.departure
+              | date
+                : 'dd.MM.yyyy
+                HH:mm'
+          }}) - {{ ticket.to }} ({{
+            ticket.arrival
+              | date
+                : 'dd.MM.yyyy
+                HH:mm'
+          }}) "
+          *ngFor="let ticket of tickets"
+        >
+          <ng-template ngbPanelContent>
+            <!---sadrzaj Acordinga-->
+            <div class="row">
+              <div class="col-10">
+                <!---tabla-->
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <th>Train Number</th>
+                      <td>{{ ticket.number }}</td>
+                    </tr>
+                    <tr>
+                      <th>Price</th>
+                      <td>{{ ticket.price }}</td>
+                    </tr>
+                    <tr>
+                      <th>Name</th>
+                      <td>{{ ticket.name }}</td>
+                    </tr>
+                    <tr>
+                      <th>Date of Birth</th>
+                      <td>{{ ticket.birthDate | date : "dd.MM.yyyy" }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <button class="noselect" (click)="onDeleteTicket(ticket._id)">
+                  <span class="text">Cancel</span
+                  ><span class="icon"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"
+                      ></path></svg>
+                  </span>
+                </button>
+              </div>
+              <div class="col-2">
+                <img
+                  src="../../../assets/images/qr.png"
+                  width="100%"
+                  alt="gr"
+                />
+              </div>
+            </div>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </div>
+  </div>
+</div>

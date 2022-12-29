@@ -1,0 +1,102 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <form [formGroup]="form">
+        <div class="row">
+          <div class="col">
+            <label for="trainNumber">Train Number</label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{ train.number }}"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="from">From</label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{ train.from }}"
+              disabled
+            />
+          </div>
+          <div class="col">
+            <label for="departure">Departure</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              value="{{ train.departure | date : 'yyyy-MM-ddTHH:mm' }}"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="to">To</label>
+            <input
+              type="text"
+              class="form-control"
+              value="{{ train.to }}"
+              disabled
+            />
+          </div>
+          <div class="col">
+            <label for="arrival">Arrival</label>
+            <input
+              type="datetime-local"
+              class="form-control"
+              value="{{ train.arrival | date : 'yyyy-MM-ddTHH:mm' }}"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="price">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              value="{{ train.price }}"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="name"
+              (change)="onChangeName($event)"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="birthDate">Birth Date</label>
+            <input
+              type="date"
+              class="form-control"
+              formControlName="date"
+              (change)="onChangeDate($event)"
+            />
+          </div>
+        </div>
+      </form>
+
+      <button
+        class="btn btn-danger hvr-grow mt-2"
+        (click)="onSendTicket()"
+        [disabled]="form.invalid"
+      >
+        Buy Tycket
+      </button>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
