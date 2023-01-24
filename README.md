@@ -2,7 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.6.
 
-This is my first project
+## Screenshoot
+
+![Alt text](https://github.com/milenkozoric/Train_2022/blob/main/Train.png "Optional title")
 
 ##  Run the project
 
